@@ -341,40 +341,45 @@ function Motion() {
         <h2 className="mt-5 max-w-2xl font-display text-4xl sm:text-5xl">
           From workshop floor to finished room
         </h2>
-        <div className="mt-14 space-y-16">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {media.reels.map((reel, i) => (
-            <div
+            <figure
               key={reel.src}
-              className={`grid items-center gap-8 lg:grid-cols-12 ${
-                i % 2 === 1 ? "lg:[&>figure]:order-2" : ""
+              className={`group relative overflow-hidden ${
+                i === 1 ? "lg:mt-16" : i === 2 ? "lg:mt-8" : ""
               }`}
             >
-              <figure className="lg:col-span-5">
-                <video
-                  src={reel.src}
-                  poster={reel.poster}
-                  controls
-                  playsInline
-                  preload="none"
-                  className="aspect-[9/16] w-full max-w-sm object-cover"
-                />
-              </figure>
-              <div className="lg:col-span-7">
-                <span className="text-xs tracking-[0.3em] uppercase text-primary">
+              <video
+                src={reel.src}
+                poster={reel.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="aspect-[9/16] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              <figcaption className="absolute inset-x-0 bottom-0 p-6">
+                <span className="font-display text-5xl leading-none text-primary/70">
+                  0{i + 1}
+                </span>
+                <div className="hairline my-4 w-12" />
+                <span className="text-[0.65rem] tracking-[0.35em] uppercase text-primary">
                   {captions[i]?.[0]}
                 </span>
-                <p className="mt-4 max-w-xl font-display text-2xl leading-snug sm:text-3xl">
+                <p className="mt-2 font-display text-2xl leading-snug">
                   {captions[i]?.[1]}
                 </p>
-                <div className="hairline mt-8 max-w-md" />
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 function Team() {
   return (
