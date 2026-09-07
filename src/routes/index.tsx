@@ -78,11 +78,11 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative min-h-[100svh] overflow-hidden">
+    <section id="top" className="relative min-h-[100svh] overflow-hidden bg-background">
       <img
         src={media.teamHero}
         alt="The Ndlovu and Son Kitchens team standing behind a fluted kitchen island they installed"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-contain md:object-cover md:object-[center_20%]"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/55 to-background" />
       <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-6 pb-20 pt-40">
