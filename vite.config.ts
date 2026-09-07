@@ -7,6 +7,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // An explicit (empty) plugins array is required so Cloudflare's deploy setup
+  // step can read/modify the Vite config instead of failing with
+  // "Cannot modify Vite config: could not find a valid plugins array."
+  vite: {
+    plugins: [],
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
